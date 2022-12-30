@@ -5,6 +5,7 @@ const filesForCaching = [
   "offline.html",
   "error404.html",
   "assets/main.css",
+  "assets/img/photogallery-logo-150.png",
 ];
 const staticCache = "web2-lab5-cache";
 
