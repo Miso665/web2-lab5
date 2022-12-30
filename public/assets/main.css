@@ -77,6 +77,10 @@
     padding: 1px;
   }
 
+  .bordered {
+    border: 3px solid green;
+  }
+
   .hidden {
     visibility: hidden;
   }
