@@ -1,0 +1,35 @@
+{
+    "name": "Web2 Peti Labos",
+    "short_name": "Web2lab5",
+    "description": "Aplikacija za peti labos iz web2",
+    "display": "fullscreen",
+    "theme_color": "red",
+    "background_color": "#DDD",
+    "start_url": "/index.html",
+    "scope": ".",
+    "dir": "ltr",
+    "lang": "en-US",
+    "prefer_related_applications": true,
+    "icons": [
+        {
+            "src": "assets/img/photogallery-logo.png",
+            "sizes": "354x355",
+            "type": "image/png"
+          },
+          {
+            "src": "assets/img/photogallery-logo-20.png",
+            "sizes": "20x20",
+            "type": "image/png"
+          },
+          {
+            "src": "assets/img/photogallery-logo-44.png",
+            "sizes": "44x44",
+            "type": "image/png"
+          },
+          {
+            "src": "assets/img/photogallery-logo-150.png",
+            "sizes": "150x150",
+            "type": "image/png"
+          }
+    ]
+}

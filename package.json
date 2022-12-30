@@ -1,0 +1,19 @@
+{
+    "name": "web2lab5",
+    "version": "1.0.0",
+    "description": "Aplikacija za peti labos iz web2",
+    "main": "server.js",
+    "author": "mcugovcan",
+    "license": "MIT",
+    "scripts": {
+        "server": "npm start"
+    },
+    "dependencies": {
+        "dotenv": "^16.0.3",
+        "express": "^4.17.1",
+        "fs-extra": "^10.0.0",
+        "multer": "^1.4.3",
+        "nodemon": "^2.0.12",
+        "web-push": "^3.4.5"
+    }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="icon" type="image/x-icon" href="./favicon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Web2 lab5</title>
+        <link rel="stylesheet" href="./assets/main.css" />
+        <link rel="stylesheet" href="./assets/camera.css" />
+        <link rel="manifest" href="./manifest.json" />
+    </head>
+    <body>
+        <div class="header">
+          <a href="/" class="logo"><img height="30px" width="30px" src="./assets/img/photogallery-logo.png"/></a>
+          <div class="header-left">
+            <a href="/">Home</a>
+            <a class="active" href="/camera">Camera</a>
+          </div>
+          </div>
+          <div>
+            <div id="afterSnap" class="hidden">
+                <canvas id="canvasPic"></canvas>
+                <h2 id="snapName" type="text">Very nice photo!</h2>
+            </div>
+        </div>
+          <div id="snapPhoto" class="center">
+            <div id="beforeSnap" class="center">
+                <video id="player" width="100%" autoplay></video>
+                <button id="btnSnap" class="niceButton">
+                    <i></i>
+                    Take photo
+                </button>
+            </div>
+        </div>
+        <script type="module">
+    
+                let player = document.getElementById("player");
+                let canvas = document.getElementById("canvasPic");
+                let beforeSnap = document.getElementById("beforeSnap");
+                let afterSnap = document.getElementById("afterSnap");
+                let startCapture = function () {                
+                    beforeSnap.classList.remove("hidden");
+                    beforeSnap.classList.add("center");
+                    afterSnap.classList.remove("center");
+                    afterSnap.classList.add("hidden");
+                    if (!("mediaDevices" in navigator)) {
+                    } else {
+                        navigator.mediaDevices
+                            .getUserMedia({ video: true, audio: false })
+                            .then((stream) => {
+                                player.srcObject = stream;
+                            })
+                            .catch((err) => {
+                                alert("Media stream not working, you probably dont have a webcam!");
+                                console.log(err);
+                            });
+                    }
+                };
+                startCapture();
+                let stopCapture = function () {
+                    afterSnap.classList.remove("hidden");
+                    afterSnap.classList.add("center");
+                    afterSnap.classList.add("movePic");
+                    beforeSnap.classList.remove("center");
+                    beforeSnap.classList.add("hidden");
+                    player.srcObject.getVideoTracks().forEach(function (track) {
+                        track.stop();
+                    });
+                }
+                document
+                    .getElementById("btnSnap")
+                    .addEventListener("click", function (event) {
+                        canvas.width = player.getBoundingClientRect().width;
+                        canvas.height = player.getBoundingClientRect().height;                    
+                        canvas
+                            .getContext("2d")
+                            .drawImage(player, 0, 0, canvas.width, canvas.height);
+                        stopCapture();
+                    });
+            </script>
+    </body>
+</html>
